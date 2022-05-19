@@ -1,74 +1,47 @@
-# **Shellex** - Simple Shell :shell:
+# Ella and Alexxy Shell
 
-A simple UNIX command interpreter written as part of the low-level programming and algorithm track at ALX.
+![alt text](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg)
 
-## Description :speech_balloon:
+### Description
 
-**Shellex** is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
+Ella and Alexxy Shell is a simple UNIX command interpreter that replicates functionalities of the simple shell (sh). Additional functions are also included. This program was written entirely in C as a milestone project for ALX Africa Software Engineering.
 
-### Invocation :rocket:
+### Installation
 
-Usage: **shellex** [filename]
+Clone this repository into your working directory. For best results, files should be compiled with GCC and the following flags: -Wall -Wextra -Werror -pedantic -std=gnu89
 
-To invoke **shellex**, compile all `.c` files in the repository and run the resulting executable:
+### Usage
 
-```
-gcc *.c -o shellex
-./shellex
-```
+After compilation, the resulting program can run stand-alone, either in interactive or non-interactive mode.
 
-**Shellex** can be invoked both interactively and non-interactively. If **shellex** is invoked with standard input not connected to a terminal, it reads and executes received commands in order.
+#### Interactive Mode
 
-Example:
-```
-$ echo "echo 'hello'" | ./shellex
-'hello'
-$
-```
+In interactive mode, simply run the program and wait for the prompt to appear. From there, you can type commands freely, exiting with either the "exit" command or ctrl-D.
 
-If **shellex** is invoked with standard input connected to a terminal (determined by [isatty](https://linux.die.net/man/3/isatty)(3)), an *interactive* shell is opened. When executing interactively, **shellex** displays the prompt `$ ` when it is ready to read a command.
+#### Non-Interactive Mode
 
-Example:
-```
-$./shellex
-$
+In non-interactive mode, echo your desired command and pipe it into the program like this:
+
+```sh
+echo "ls" | ./shell
 ```
 
-Alternatively, if command line arguments are supplied upon invocation, **shellex** treats the first argument as a file from which to read commands. The supplied file should contain one command per line. **Shellex** runs each of the commands contained in the file in order before exiting.
+In non-interactive mode, the program will exit after finishing your desired command(s).
 
-Example:
-```
-$ cat test
-echo 'hello'
-$ ./shellex test
-'hello'
-$
-```
+#### Included Built-Ins
 
-### Environment :deciduous_tree:
+Our shell has support for the following built-in commands:
 
-Upon invocation, **shellex** receives and copies the environment of the parent process in which it was executed. This environment is an array of *name-value* strings describing variables in the format *NAME=VALUE*. A few key environmental variables are:
+| Command             | Definition                                                                                |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| exit [n]            | Exit the shell, with an optional exit status, n.                                          |
+| env                 | Print the environment.                                                                    |
+| setenv [var][value] | Set an environment variable and value. If the variable exists, the value will be updated. |
+| unsetenv [var]      | Remove an environment variable.                                                           |
+| cd [dir]            | Change the directory.                                                                     |
+| help [built-in]     | Read documentation for a built-in.                                                        |
 
-#### HOME
-The home directory of the current user and the default directory argument for the **cd** builtin command.
 
-```
-$ echo "echo $HOME" | ./shellex
-/home/vagrant
-```
+### Credits
 
-#### PWD
-The current working directory as set by the **cd** command.
-
-```
-$ echo "echo $PWD" | ./shellex
-/home/vagrant/ALX/simple_shell
-```
-
-#### OLDPWD
-The previous working directory as set by the **cd** command.
-
-```
-$ echo "echo $OLDPWD" | ./shellex
-/home/vagrant/ALX/printf
-```
+All code written by [Ella](https://github.com/EllaLawrie) and [Alexxy](https://github.com/Lexxyla).
