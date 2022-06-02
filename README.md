@@ -37,4 +37,4 @@ In non-interactive mode, the program will exit after finishing your desired comm
 
 ### Credits
  [Daaloray](https://github.com/Daaloray) 
- [Levi](https://github.com/fabulous).
+ [Levi](https://github.com/fabulouslevi).
